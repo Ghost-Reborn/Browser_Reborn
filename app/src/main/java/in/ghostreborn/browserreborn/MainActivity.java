@@ -15,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
         WebView rebornWebView = new WebView(this);
         setContentView(rebornWebView);
 
+        //Remove action bar
+        getSupportActionBar().hide();
+
         rebornWebView.loadUrl("https://www.google.com");
         rebornWebView.getSettings().setJavaScriptEnabled(true);
         rebornWebView.canGoBack();
