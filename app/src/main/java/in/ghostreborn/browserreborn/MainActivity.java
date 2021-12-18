@@ -3,9 +3,12 @@ package in.ghostreborn.browserreborn;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +26,18 @@ public class MainActivity extends AppCompatActivity {
         rebornWebView.getSettings().setJavaScriptEnabled(true);
         rebornWebView.canGoBack();
         rebornWebView.setWebViewClient(new RebornWebViewClient());
+
+        EditText rebornSearchBar = findViewById(R.id.reborn_web_bar);
+        ImageButton rebornSearchButton = findViewById(R.id.reborn_web_search);
+        ImageButton rebornWebBack = findViewById(R.id.reborn_web_back);
+
+        rebornSearchButton.setOnClickListener(view -> rebornWebView.loadUrl(
+                rebornSearchBar.getText().toString()
+        ));
+
+        rebornWebBack.setOnClickListener(view -> {
+            rebornWebView.goBack();
+        });
 
     }
 }
