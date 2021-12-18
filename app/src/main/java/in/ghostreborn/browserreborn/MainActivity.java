@@ -12,11 +12,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        WebView rebornWebView = new WebView(this);
-        setContentView(rebornWebView);
+        setContentView(R.layout.reborn_browser_layout);
 
         //Remove action bar
         getSupportActionBar().hide();
+
+        WebView rebornWebView = findViewById(R.id.reborn_web_view);
 
         rebornWebView.loadUrl("https://www.google.com");
         rebornWebView.getSettings().setJavaScriptEnabled(true);
