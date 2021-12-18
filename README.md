@@ -1,2 +1,2 @@
 # Browser Reborn
-This is a simple Android based opensource app
+This is a simple Android based opensource browser app
