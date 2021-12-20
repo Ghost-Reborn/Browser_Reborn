@@ -28,19 +28,23 @@
 
     <ImageButton
         android:id="@+id/reborn_web_search"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:background="@null"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="@+id/reborn_web_bar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/reborn_web_bar"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_search" />
+        app:srcCompat="@drawable/ic_search" />
 
     <ImageButton
         android:id="@+id/reborn_web_back"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:background="@null"
         app:layout_constraintBottom_toTopOf="@+id/reborn_web_view"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_input_delete" />
+        app:srcCompat="@drawable/ic_home" />
 </androidx.constraintlayout.widget.ConstraintLayout>
