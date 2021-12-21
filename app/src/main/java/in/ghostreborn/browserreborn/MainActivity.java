@@ -15,8 +15,6 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-//TODO the filename is changed on second
-// download and the file name changed is of the first
 public class MainActivity extends AppCompatActivity {
 
     @Override
