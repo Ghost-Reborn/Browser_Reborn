@@ -1,5 +1,6 @@
 package in.ghostreborn.browserreborn;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
@@ -18,6 +19,14 @@ public class MainActivity extends AppCompatActivity {
 
         //Remove action bar
         getSupportActionBar().hide();
+
+        requestPermissions(
+                new String[]{
+                        Manifest.permission.MANAGE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                }, 1
+        );
 
         WebView rebornWebView = findViewById(R.id.reborn_web_view);
         RebornWebUtils.setWebView(rebornWebView, this);
