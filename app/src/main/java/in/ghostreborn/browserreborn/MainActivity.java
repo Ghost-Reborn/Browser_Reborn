@@ -10,7 +10,6 @@ import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -39,9 +38,16 @@ public class MainActivity extends AppCompatActivity {
         ImageButton rebornSearchButton = findViewById(R.id.reborn_web_search);
         ImageButton rebornWebBack = findViewById(R.id.reborn_web_back);
 
-        rebornSearchButton.setOnClickListener(view -> rebornWebView.loadUrl(
-                rebornSearchBar.getText().toString()
-        ));
+        rebornSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = rebornSearchBar.getText().toString();
+                if (!url.contains("http")){
+                    url = "https://www.google.com/search?&q=" + rebornSearchBar.getText().toString();
+                }
+                rebornWebView.loadUrl(url);
+            }
+        });
 
         rebornWebBack.setOnClickListener(view -> {
             rebornWebView.loadUrl("https://google.com");
@@ -55,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
-                        switch (menuItem.getItemId()){
+                        switch (menuItem.getItemId()) {
                             case R.id.go_backward:
                                 rebornWebView.goBack();
                                 break;
@@ -77,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
 class RebornWebViewClient extends WebViewClient {
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+
         view.loadUrl(request.getUrl().toString());
         return true;
     }
