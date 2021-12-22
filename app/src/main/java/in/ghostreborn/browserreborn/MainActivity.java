@@ -2,11 +2,15 @@ package in.ghostreborn.browserreborn;
 
 import android.Manifest;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,7 +44,31 @@ public class MainActivity extends AppCompatActivity {
         ));
 
         rebornWebBack.setOnClickListener(view -> {
-            rebornWebView.goBack();
+            rebornWebView.loadUrl("https://google.com");
+        });
+
+        rebornWebBack.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                PopupMenu menu = new PopupMenu(MainActivity.this, rebornWebBack);
+                menu.getMenuInflater().inflate(R.menu.popup_menu, menu.getMenu());
+                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()){
+                            case R.id.go_backward:
+                                rebornWebView.goBack();
+                                break;
+                            case R.id.go_forward:
+                                rebornWebView.goForward();
+                                break;
+                        }
+                        return true;
+                    }
+                });
+                menu.show();
+                return true;
+            }
         });
 
     }
