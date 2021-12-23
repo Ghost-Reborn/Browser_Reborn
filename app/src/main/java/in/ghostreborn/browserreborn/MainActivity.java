@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    private WebView rebornWebView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 }, 1
         );
 
-        WebView rebornWebView = findViewById(R.id.reborn_web_view);
+        rebornWebView = findViewById(R.id.reborn_web_view);
         EditText rebornSearchBar = findViewById(R.id.reborn_web_bar);
         RebornWebUtils.setWebView(rebornWebView, this, rebornSearchBar);
 
@@ -88,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
             finish();
         }else {
-            Toast.makeText(this, "Press back again to exit!", Toast.LENGTH_SHORT).show();
+            rebornWebView.goBack();
         }
         timeCheck = System.currentTimeMillis();
     }
