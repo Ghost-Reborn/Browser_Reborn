@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
+import android.util.Log;
 import android.webkit.DownloadListener;
 import android.webkit.WebView;
 import android.widget.EditText;
@@ -27,12 +28,8 @@ public class RebornWebUtils {
                 request.setNotificationVisibility(Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
                 Cursor cursor = downloadManager.query(query);
                 cursor.moveToFirst();
-                String fileURI = cursor.getString(6);
 
-                // Parse filename using download address
-                // TODO find alternative efficient way
-                fileURI = fileURI.substring(fileURI.lastIndexOf("/") + 1);
-                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileURI);
+                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, cursor.getString(4));
                 downloadManager.enqueue(request);
             }
         });
