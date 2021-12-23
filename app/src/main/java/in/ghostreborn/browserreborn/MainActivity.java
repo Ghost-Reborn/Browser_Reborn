@@ -10,6 +10,7 @@ import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -78,6 +79,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    long timeCheck;
+    @Override
+    public void onBackPressed() {
+        if (timeCheck + 2000 > System.currentTimeMillis()){
+            super.onBackPressed();
+            finish();
+        }else {
+            Toast.makeText(this, "Press back again to exit!", Toast.LENGTH_SHORT).show();
+        }
+        timeCheck = System.currentTimeMillis();
     }
 }
 
