@@ -19,7 +19,7 @@
         android:id="@+id/reborn_web_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/reborn_web_back"
+        app:layout_constraintBottom_toTopOf="@+id/reborn_web_home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
         app:srcCompat="@drawable/ic_search" />
 
     <ImageButton
-        android:id="@+id/reborn_web_back"
+        android:id="@+id/reborn_web_home"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:background="@null"

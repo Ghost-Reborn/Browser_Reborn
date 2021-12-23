@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         ImageButton rebornSearchButton = findViewById(R.id.reborn_web_search);
-        ImageButton rebornWebBack = findViewById(R.id.reborn_web_back);
+        ImageButton rebornWebHome = findViewById(R.id.reborn_web_home);
 
         rebornSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,14 +51,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        rebornWebBack.setOnClickListener(view -> {
+        rebornWebHome.setOnClickListener(view -> {
             rebornWebView.loadUrl("https://google.com");
         });
 
-        rebornWebBack.setOnLongClickListener(new View.OnLongClickListener() {
+        rebornWebHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                PopupMenu menu = new PopupMenu(MainActivity.this, rebornWebBack);
+                PopupMenu menu = new PopupMenu(MainActivity.this, rebornWebHome);
                 menu.getMenuInflater().inflate(R.menu.popup_menu, menu.getMenu());
                 menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
