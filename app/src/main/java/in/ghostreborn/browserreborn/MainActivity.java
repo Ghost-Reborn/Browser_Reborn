@@ -1,12 +1,15 @@
 package in.ghostreborn.browserreborn;
 
 import android.Manifest;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
@@ -35,7 +38,14 @@ public class MainActivity extends AppCompatActivity {
         );
 
         rebornWebView = findViewById(R.id.reborn_web_view);
-        EditText rebornSearchBar = findViewById(R.id.reborn_web_bar);
+        AutoCompleteTextView rebornSearchBar = findViewById(R.id.reborn_web_bar);
+        String[] autoComplete = {
+                "https://google.com",
+                "https://youtube.com"
+        };
+        rebornSearchBar.setThreshold(3);
+        rebornSearchBar.setTextColor(Color.CYAN);
+        rebornSearchBar.setAdapter(new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, autoComplete));
         RebornWebUtils.setWebView(rebornWebView, this, rebornSearchBar);
 
 
@@ -55,30 +65,6 @@ public class MainActivity extends AppCompatActivity {
 
         rebornWebHome.setOnClickListener(view -> {
             rebornWebView.loadUrl("https://google.com");
-        });
-
-        rebornWebHome.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                PopupMenu menu = new PopupMenu(MainActivity.this, rebornWebHome);
-                menu.getMenuInflater().inflate(R.menu.popup_menu, menu.getMenu());
-                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem menuItem) {
-                        switch (menuItem.getItemId()) {
-                            case R.id.go_backward:
-                                rebornWebView.goBack();
-                                break;
-                            case R.id.go_forward:
-                                rebornWebView.goForward();
-                                break;
-                        }
-                        return true;
-                    }
-                });
-                menu.show();
-                return true;
-            }
         });
 
     }

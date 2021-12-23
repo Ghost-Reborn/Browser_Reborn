@@ -14,7 +14,7 @@ import android.widget.EditText;
 public class RebornWebUtils {
 
     public static void setWebView(WebView rebornWebView, Context context, EditText searchText) {
-        rebornWebView.loadUrl("https://www.happymod.com");
+        rebornWebView.loadUrl("https://www.google.com");
         rebornWebView.getSettings().setJavaScriptEnabled(true);
         rebornWebView.canGoBack();
         rebornWebView.setWebViewClient(new RebornWebViewClient(searchText));
