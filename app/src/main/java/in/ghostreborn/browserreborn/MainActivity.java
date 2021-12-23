@@ -40,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
 
         rebornWebView = findViewById(R.id.reborn_web_view);
         AutoCompleteTextView rebornSearchBar = findViewById(R.id.reborn_web_bar);
+        ImageButton rebornSearchButton = findViewById(R.id.reborn_web_search);
+        ImageButton rebornWebHome = findViewById(R.id.reborn_web_home);
+        ImageButton rebornWebBack = findViewById(R.id.reborn_web_back);
+        ImageButton rebornWebForward = findViewById(R.id.reborn_web_forward);
         String[] autoComplete = {
                 "https://google.com",
                 "https://youtube.com"
@@ -50,34 +54,16 @@ public class MainActivity extends AppCompatActivity {
         RebornWebUtils.setWebView(rebornWebView, this, rebornSearchBar);
 
 
-        ImageButton rebornSearchButton = findViewById(R.id.reborn_web_search);
-        ImageButton rebornWebHome = findViewById(R.id.reborn_web_home);
-        ImageButton rebornWebBack = findViewById(R.id.reborn_web_back);
-        ImageButton rebornWebForward = findViewById(R.id.reborn_web_forward);
+        rebornWebBack.setOnClickListener(view -> rebornWebView.goBack());
 
-        rebornWebBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                rebornWebView.goBack();
-            }
-        });
+        rebornWebForward.setOnClickListener(view -> rebornWebView.goForward());
 
-        rebornWebForward.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                rebornWebView.goForward();
+        rebornSearchButton.setOnClickListener(view -> {
+            String url = rebornSearchBar.getText().toString();
+            if (!url.contains("http")){
+                url = "https://www.google.com/search?&q=" + rebornSearchBar.getText().toString();
             }
-        });
-
-        rebornSearchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String url = rebornSearchBar.getText().toString();
-                if (!url.contains("http")){
-                    url = "https://www.google.com/search?&q=" + rebornSearchBar.getText().toString();
-                }
-                rebornWebView.loadUrl(url);
-            }
+            rebornWebView.loadUrl(url);
         });
 
         rebornWebHome.setOnClickListener(view -> {
@@ -96,24 +82,5 @@ public class MainActivity extends AppCompatActivity {
             rebornWebView.goBack();
         }
         timeCheck = System.currentTimeMillis();
-    }
-}
-
-class RebornWebViewClient extends WebViewClient {
-
-    EditText mSearchText;
-    public RebornWebViewClient(EditText searchText){
-        mSearchText = searchText;
-    }
-
-    @Override
-    public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-        view.loadUrl(request.getUrl().toString());
-        return true;
-    }
-
-    @Override
-    public void onPageFinished(WebView view, String url) {
-        mSearchText.setText(url);
     }
 }
