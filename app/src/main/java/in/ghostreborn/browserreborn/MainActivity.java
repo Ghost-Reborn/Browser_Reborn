@@ -32,9 +32,10 @@ public class MainActivity extends AppCompatActivity {
         );
 
         WebView rebornWebView = findViewById(R.id.reborn_web_view);
-        RebornWebUtils.setWebView(rebornWebView, this);
-
         EditText rebornSearchBar = findViewById(R.id.reborn_web_bar);
+        RebornWebUtils.setWebView(rebornWebView, this, rebornSearchBar);
+
+
         ImageButton rebornSearchButton = findViewById(R.id.reborn_web_search);
         ImageButton rebornWebBack = findViewById(R.id.reborn_web_back);
 
@@ -81,10 +82,20 @@ public class MainActivity extends AppCompatActivity {
 }
 
 class RebornWebViewClient extends WebViewClient {
+
+    EditText mSearchText;
+    public RebornWebViewClient(EditText searchText){
+        mSearchText = searchText;
+    }
+
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-
         view.loadUrl(request.getUrl().toString());
         return true;
+    }
+
+    @Override
+    public void onPageFinished(WebView view, String url) {
+        mSearchText.setText(url);
     }
 }

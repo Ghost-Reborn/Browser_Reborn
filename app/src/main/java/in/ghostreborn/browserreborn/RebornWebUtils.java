@@ -8,14 +8,15 @@ import android.net.Uri;
 import android.os.Environment;
 import android.webkit.DownloadListener;
 import android.webkit.WebView;
+import android.widget.EditText;
 
 public class RebornWebUtils {
 
-    public static void setWebView(WebView rebornWebView, Context context) {
+    public static void setWebView(WebView rebornWebView, Context context, EditText searchText) {
         rebornWebView.loadUrl("https://www.happymod.com");
         rebornWebView.getSettings().setJavaScriptEnabled(true);
         rebornWebView.canGoBack();
-        rebornWebView.setWebViewClient(new RebornWebViewClient());
+        rebornWebView.setWebViewClient(new RebornWebViewClient(searchText));
         rebornWebView.setDownloadListener(new DownloadListener() {
             @Override
             public void onDownloadStart(String url, String s1, String s2, String s3, long l) {
