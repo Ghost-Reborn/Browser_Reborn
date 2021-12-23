@@ -3,6 +3,7 @@ package in.ghostreborn.browserreborn;
 import android.Manifest;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebResourceRequest;
@@ -51,6 +52,22 @@ public class MainActivity extends AppCompatActivity {
 
         ImageButton rebornSearchButton = findViewById(R.id.reborn_web_search);
         ImageButton rebornWebHome = findViewById(R.id.reborn_web_home);
+        ImageButton rebornWebBack = findViewById(R.id.reborn_web_back);
+        ImageButton rebornWebForward = findViewById(R.id.reborn_web_forward);
+
+        rebornWebBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rebornWebView.goBack();
+            }
+        });
+
+        rebornWebForward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rebornWebView.goForward();
+            }
+        });
 
         rebornSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         rebornWebHome.setOnClickListener(view -> {
-            rebornWebView.loadUrl("https://google.com");
+            rebornWebView.loadUrl("https://www.google.com");
         });
 
     }
