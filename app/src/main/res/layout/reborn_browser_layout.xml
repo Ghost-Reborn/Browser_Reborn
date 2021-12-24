@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@null">
 
     <AutoCompleteTextView
         android:id="@+id/reborn_web_bar"
@@ -46,8 +47,8 @@
         android:background="@null"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/reborn_web_forward"
+        app:layout_constraintStart_toEndOf="@+id/reborn_web_back"
         app:srcCompat="@drawable/ic_home" />
 
     <ImageButton
@@ -69,9 +70,20 @@
         android:background="@null"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/reborn_settings"
         app:layout_constraintStart_toEndOf="@+id/reborn_web_home"
         app:layout_constraintTop_toTopOf="@+id/reborn_web_home"
         app:srcCompat="@drawable/ic_forward" />
+
+    <ImageButton
+        android:id="@+id/reborn_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/reborn_web_forward"
+        app:layout_constraintTop_toTopOf="@+id/reborn_web_home"
+        app:srcCompat="@android:drawable/ic_menu_manage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

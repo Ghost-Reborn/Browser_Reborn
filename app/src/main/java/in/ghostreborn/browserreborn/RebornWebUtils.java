@@ -3,6 +3,7 @@ package in.ghostreborn.browserreborn;
 import android.app.DownloadManager;
 import android.app.DownloadManager.Request;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
@@ -14,8 +15,12 @@ import android.widget.EditText;
 public class RebornWebUtils {
 
     public static void setWebView(WebView rebornWebView, Context context, EditText searchText) {
+
+        SharedPreferences preferences = context.getSharedPreferences(RebornConstants.PREFERENCES_NAME, Context.MODE_PRIVATE);
+        boolean isJavascriptEnabled = preferences.getBoolean(RebornConstants.JAVA_SCRIPT_ENABLED, false);
+
         rebornWebView.loadUrl("https://www.google.com");
-        rebornWebView.getSettings().setJavaScriptEnabled(true);
+        rebornWebView.getSettings().setJavaScriptEnabled(isJavascriptEnabled);
         rebornWebView.canGoBack();
         rebornWebView.setWebViewClient(new RebornWebViewClient(searchText));
         rebornWebView.setDownloadListener(new DownloadListener() {

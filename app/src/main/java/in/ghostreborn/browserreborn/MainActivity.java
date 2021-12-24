@@ -1,6 +1,7 @@
 package in.ghostreborn.browserreborn;
 
 import android.Manifest;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
@@ -53,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         rebornSearchBar.setAdapter(new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, autoComplete));
         RebornWebUtils.setWebView(rebornWebView, this, rebornSearchBar);
 
-
         rebornWebBack.setOnClickListener(view -> rebornWebView.goBack());
 
         rebornWebForward.setOnClickListener(view -> rebornWebView.goForward());
@@ -68,6 +69,14 @@ public class MainActivity extends AppCompatActivity {
 
         rebornWebHome.setOnClickListener(view -> {
             rebornWebView.loadUrl("https://www.google.com");
+        });
+
+        ImageButton rebornSettings = findViewById(R.id.reborn_settings);
+        rebornSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+            }
         });
 
     }
