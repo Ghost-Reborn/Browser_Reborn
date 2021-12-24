@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         ImageButton rebornWebHome = findViewById(R.id.reborn_web_home);
         ImageButton rebornWebBack = findViewById(R.id.reborn_web_back);
         ImageButton rebornWebForward = findViewById(R.id.reborn_web_forward);
+        ImageButton rebornWebReload = findViewById(R.id.reborn_web_reload);
         String[] autoComplete = {
                 "https://google.com",
                 "https://youtube.com"
@@ -72,11 +73,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ImageButton rebornSettings = findViewById(R.id.reborn_settings);
-        rebornSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-            }
+        rebornSettings.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, SettingsActivity.class)));
+
+        rebornWebReload.setOnClickListener(view -> {
+                  rebornWebView.loadUrl(rebornWebView.getUrl());
         });
 
     }
