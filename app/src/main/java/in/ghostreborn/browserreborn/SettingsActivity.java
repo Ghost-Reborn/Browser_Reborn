@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.CompoundButton;
+import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -35,6 +36,27 @@ public class SettingsActivity extends AppCompatActivity {
                 editor.putBoolean(RebornConstants.JAVA_SCRIPT_ENABLED, false).apply();
             }
         });
+
+        //Progress Thingy
+        
+        DownloadManager manager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+        DownloadManager.Query query = new DownloadManager.Query();
+        Cursor cursor = manager.query(query);
+        cursor.moveToFirst();
+        if (cursor.getCount() > 0){
+            ProgressBar progressBar = findViewById(R.id.progressBar);
+
+            double progress = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR)) /
+                    cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES));
+
+            progressBar.setProgress(
+                    (int) -(progress)
+            );
+
+            Log.e("Downloaded: ", cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR)) + "");
+            Log.e("Downloaded: ", cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES)) + "");
+            Log.e("PROGRESS: ", progress + "");
+        }
 
     }
 }
