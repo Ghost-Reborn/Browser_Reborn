@@ -70,7 +70,7 @@
         android:background="@null"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/reborn_settings"
+        app:layout_constraintEnd_toStartOf="@+id/reborn_web_reload"
         app:layout_constraintStart_toEndOf="@+id/reborn_web_home"
         app:layout_constraintTop_toTopOf="@+id/reborn_web_home"
         app:srcCompat="@drawable/ic_forward" />
@@ -82,8 +82,20 @@
         android:background="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/reborn_web_forward"
+        app:layout_constraintStart_toEndOf="@id/reborn_web_reload"
         app:layout_constraintTop_toTopOf="@+id/reborn_web_home"
         app:srcCompat="@android:drawable/ic_menu_manage" />
+
+    <ImageButton
+        android:id="@+id/reborn_web_reload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/reborn_settings"
+        app:layout_constraintStart_toEndOf="@+id/reborn_web_forward"
+        app:layout_constraintTop_toBottomOf="@+id/reborn_web_view"
+        app:srcCompat="@drawable/ic_reload" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
