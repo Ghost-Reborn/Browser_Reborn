@@ -3,8 +3,10 @@ package in.ghostreborn.browserreborn;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
+import android.app.DownloadManager;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.CompoundButton;
