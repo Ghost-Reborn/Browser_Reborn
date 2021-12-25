@@ -98,4 +98,15 @@
         app:layout_constraintTop_toBottomOf="@+id/reborn_web_view"
         app:srcCompat="@drawable/ic_reload" />
 
+    <ImageButton
+        android:id="@+id/reborn_download"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/reborn_settings"
+        app:layout_constraintTop_toTopOf="@+id/reborn_settings"
+        app:srcCompat="@android:drawable/stat_sys_download" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

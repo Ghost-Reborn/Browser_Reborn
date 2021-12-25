@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         ImageButton rebornWebBack = findViewById(R.id.reborn_web_back);
         ImageButton rebornWebForward = findViewById(R.id.reborn_web_forward);
         ImageButton rebornWebReload = findViewById(R.id.reborn_web_reload);
+        ImageButton rebornDownload = findViewById(R.id.reborn_download);
         String[] autoComplete = {
                 "https://google.com",
                 "https://youtube.com"
@@ -78,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
         rebornWebReload.setOnClickListener(view -> {
                   rebornWebView.loadUrl(rebornWebView.getUrl());
         });
+
+        rebornDownload.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, DownloadActivity.class)));
 
     }
 
